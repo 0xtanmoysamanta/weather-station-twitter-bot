@@ -1,8 +1,9 @@
+
 // ###################################################################################################################################################################################
 // In this following code we, the student of BANDIPUR IDEAL ACADEMY FOR BOY, build the code.
 // Special THANKS TO TANMOY SAMANTA, class 9th student, for contributer your most valuable time from the past two year.
 //And special Thanks all the teachers for the trust on us , specificali on TANMOY SAMANTA.
-//CREATED ON: 5th,December,2022. COPYRIGHT : UNDER MIT PUBLIC LICENCE.
+//CREATED ON: 5th,December,2022. COPYRIGHT : UNDER GNU PUBLIC LICENCE .
 //***************************************THIS DEMONSTRATE HOW A WEATHER ACTUALLY WORKS!****************************************************
 /* The data from our mini weather station will be uploded on a cloud storage. Bascilly the daata will be uploded to The ThinkSpeak's data senter. And our job is to mode it avalable 
 on the Internet so everyone who has Internet connection can access the data. And this is where Twitter comes. The data will be avalable for user. Particularly @lwkfeed on Twitter
@@ -34,7 +35,7 @@ on the Internet so everyone who has Internet connection can access the data. And
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 
-MAIL ME AT tanmoysamanta99925@gmail.com for further information, if required..
+Dm me ME AT https://twitter.com/RepliedbyTanmoy for further information, if required..
 
 
 
@@ -53,27 +54,21 @@ DHT dht(DHTPIN, DHTTYPE);
 WiFiClient client;
 HTTPClient http;
 // PUTE YOU WIFI INFORMATION HERE
-const char WiFiName = 'Jionet';
-const char WiFiPasswd = 'youfuck1';
+const char WiFiName = 'Jionet'; // #put your wifi name  here. 
+const char WiFiPasswd = 'youfuck1';  // # put your wifi password here.
 
 
 
 // PUTE YOUR ThingSpeak infornation here
-long myChannelNumber = 1128174;
-const char myWriteAPIKey[] = "3MW0L5TM6U96NTAA";
+long myChannelNumber = xxx; // Replace the xxx with ThingSpeak chanel number.
+const char myWriteAPIKey[] = "xxxxxxxxxxxxxxxx"; // Replace the xxxxxxxxxxxxxx with api key which you have got from ThingSpeak Website.
 String myStatus = "";
 
-
-// put your ThingTweet information here 
-String host = " api.thingspeak.com";
-int httpPort = 80;
-String url = "/apps/thingtweet/1/statuses/update";
-const String ThingTweetApi = "FPBLYWABSMSWEZES";
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  WiFi.begin("Jionet", "youfuck1");  // wifi name and passdwd here
+  WiFi.begin("Jionet", "youfuck1");  // #wifi name and password once more here
   
   while (WiFi.status() != WL_CONNECTED) {
     delay(200);
@@ -182,29 +177,6 @@ if (y == 200 ){
     Serial.println("Problem updating channel. HTTP error code " + String(x));
   }
  // Data is sucessfully send data to the ThingSpeak cloud!
-
-
-
-
-
-
-    http.begin(client, host, httpPort, url);
-  
-  
-  const String RequestBody = "api_key=" + String(ThingTweetApi)+ "&status=" + String(Temprature) + String(Humidity);
-  delay(300);
-
-  int StatusCode = http.POST(RequestBody);
-  if (StatusCode  == 200 ) {
-    Serial.println("[SUCCEED] Data uploded on Twitter!");
-  }
-  else{
-    Serial.println("[FAIL] Couldnot uplode data on Twitter!" );
-    Serial.println(StatusCode);
-  }
-  
-  http.end();
-  Serial.println("------------------------------------");
 
 
   delay(450000);  ///* After posting all of the senced data to ThingSpeak and to the mention Twitter Account it will wait for FORTY-FIVE second(minimuhole system hom). This
