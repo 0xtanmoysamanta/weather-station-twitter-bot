@@ -55,7 +55,7 @@ WiFiClient client;
 HTTPClient http;
 // PUTE YOU WIFI INFORMATION HERE
 const char WiFiName = 'Jionet'; // #put your wifi name  here. 
-const char WiFiPasswd = 'youfuck1';  // # put your wifi password here.
+const char WiFiPasswd = 'passwd';  // # put your wifi password here.
 
 
 
@@ -68,7 +68,7 @@ String myStatus = "";
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-  WiFi.begin("Jionet", "youfuck1");  // #wifi name and password once more here
+  WiFi.begin("Jionet", "passwd");  // #wifi name and password once more here
   
   while (WiFi.status() != WL_CONNECTED) {
     delay(200);
@@ -94,7 +94,7 @@ void loop() {
     Serial.print("Attempting to connect to the  SSID: ");
 
     while (WiFi.status() != WL_CONNECTED) {
-      WiFi.begin("Jionet", "youfuck1");  // Connect to WPA/WPA2 network. Change this line if using open or WEP network
+      WiFi.begin("Jionet", "passwd");  // Connect to WPA/WPA2 network. Change this line if using open or WEP network
       Serial.print(".");
       delay(5000);
     }
